@@ -1,3 +1,6 @@
+/* Import REMWaste Theme */
+@import "./styles/theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,25 +30,25 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
+    --background: 222 84% 1%;
+    --foreground: 213 31% 91%;
+    --card: 222 84% 1%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 84% 1%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
     --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 215 25% 12%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --muted: 215 25% 12%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 25% 12%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    --border: 215 25% 12%;
+    --input: 215 25% 12%;
+    --ring: 216 34% 17%;
   }
 }
 
@@ -53,14 +56,35 @@
   * {
     @apply border-border;
   }
+
+  html {
+    @apply min-h-screen;
+    background: hsl(var(--background));
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply min-h-screen text-foreground;
+    background: hsl(var(--background));
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    @apply min-h-screen;
+    background: hsl(var(--background));
   }
 }
 
+/* Custom gradients and animations */
 .gradient-bg {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dark .gradient-bg {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
 }
 
 .glass-morphism {
@@ -71,11 +95,123 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.skip-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.dark .glass-morphism {
+  background: rgba(30, 58, 138, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
-.skip-card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+/* Performance optimized animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6),
+      0 0 30px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  will-change: background-position;
+}
+
+.dark .shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.2),
+    transparent
+  );
+  background-size: 1000px 100%;
+}
+
+/* Modern card styles */
+.card-modern {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.dark .card-modern {
+  background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+  border: 1px solid rgba(30, 41, 59, 0.3);
+}
+
+/* Optimize hover effects */
+.skip-card-hover {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Text balance for better typography */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme("colors.gray.100");
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme("colors.gray.400");
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: theme("colors.gray.600");
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.gray.500");
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.gray.500");
 }

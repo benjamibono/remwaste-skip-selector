@@ -1,0 +1,359 @@
+/* =====================================
+   REMWASTE THEME CONFIGURATION
+   ===================================== */
+
+/* CSS Variables for Colors and Spacing */
+:root {
+  /* ===== Core Brand Colors ===== */
+  --remwaste-primary: 59, 130, 246; /* Blue 500 */
+  --remwaste-primary-dark: 37, 99, 235; /* Blue 600 */
+  --remwaste-primary-light: 147, 197, 253; /* Blue 300 */
+
+  --remwaste-secondary: 79, 70, 229; /* Indigo 600 */
+  --remwaste-secondary-dark: 67, 56, 202; /* Indigo 700 */
+  --remwaste-secondary-light: 165, 180, 252; /* Indigo 300 */
+
+  /* ===== Status Colors ===== */
+  --remwaste-success: 34, 197, 94; /* Green 500 */
+  --remwaste-success-dark: 22, 163, 74; /* Green 600 */
+  --remwaste-success-light: 134, 239, 172; /* Green 300 */
+
+  --remwaste-warning: 249, 115, 22; /* Orange 500 */
+  --remwaste-warning-dark: 234, 88, 12; /* Orange 600 */
+  --remwaste-warning-light: 253, 186, 116; /* Orange 300 */
+
+  --remwaste-error: 239, 68, 68; /* Red 500 */
+  --remwaste-error-dark: 220, 38, 38; /* Red 600 */
+  --remwaste-error-light: 252, 165, 165; /* Red 300 */
+
+  /* ===== Neutral Colors (Light Mode) ===== */
+  --remwaste-gray-50: 249, 250, 251;
+  --remwaste-gray-100: 243, 244, 246;
+  --remwaste-gray-200: 229, 231, 235;
+  --remwaste-gray-300: 209, 213, 219;
+  --remwaste-gray-400: 156, 163, 175;
+  --remwaste-gray-500: 107, 114, 128;
+  --remwaste-gray-600: 75, 85, 99;
+  --remwaste-gray-700: 55, 65, 81;
+  --remwaste-gray-800: 31, 41, 55;
+  --remwaste-gray-900: 17, 24, 39;
+
+  /* ===== Background Colors ===== */
+  --remwaste-bg-primary: 255, 255, 255; /* White */
+  --remwaste-bg-secondary: var(--remwaste-gray-50);
+  --remwaste-bg-tertiary: var(--remwaste-gray-100);
+
+  /* ===== Text Colors ===== */
+  --remwaste-text-primary: var(--remwaste-gray-900);
+  --remwaste-text-secondary: var(--remwaste-gray-600);
+  --remwaste-text-tertiary: var(--remwaste-gray-500);
+
+  /* ===== Border Colors ===== */
+  --remwaste-border-primary: var(--remwaste-gray-200);
+  --remwaste-border-secondary: var(--remwaste-gray-300);
+
+  /* ===== Shadow Colors ===== */
+  --remwaste-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --remwaste-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --remwaste-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --remwaste-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ===== Spacing ===== */
+  --remwaste-spacing-xs: 0.25rem; /* 4px */
+  --remwaste-spacing-sm: 0.5rem; /* 8px */
+  --remwaste-spacing-md: 1rem; /* 16px */
+  --remwaste-spacing-lg: 1.5rem; /* 24px */
+  --remwaste-spacing-xl: 2rem; /* 32px */
+  --remwaste-spacing-2xl: 3rem; /* 48px */
+  --remwaste-spacing-3xl: 4rem; /* 64px */
+
+  /* ===== Border Radius ===== */
+  --remwaste-radius-sm: 0.375rem; /* 6px */
+  --remwaste-radius-md: 0.5rem; /* 8px */
+  --remwaste-radius-lg: 0.75rem; /* 12px */
+  --remwaste-radius-xl: 1rem; /* 16px */
+  --remwaste-radius-2xl: 1.5rem; /* 24px */
+  --remwaste-radius-3xl: 2rem; /* 32px */
+}
+
+/* ===== Dark Mode Colors ===== */
+.dark {
+  /* ===== Dark Neutral Colors ===== */
+  --remwaste-slate-50: 248, 250, 252;
+  --remwaste-slate-100: 241, 245, 249;
+  --remwaste-slate-200: 226, 232, 240;
+  --remwaste-slate-300: 203, 213, 225;
+  --remwaste-slate-400: 148, 163, 184;
+  --remwaste-slate-500: 100, 116, 139;
+  --remwaste-slate-600: 71, 85, 105;
+  --remwaste-slate-700: 51, 65, 85;
+  --remwaste-slate-800: 30, 41, 59;
+  --remwaste-slate-900: 15, 23, 42;
+  --remwaste-slate-950: 2, 6, 23;
+
+  /* ===== Dark Mode Backgrounds ===== */
+  --remwaste-bg-primary: var(--remwaste-slate-950);
+  --remwaste-bg-secondary: var(--remwaste-slate-900);
+  --remwaste-bg-tertiary: var(--remwaste-slate-800);
+
+  /* ===== Dark Mode Text Colors ===== */
+  --remwaste-text-primary: var(--remwaste-slate-100);
+  --remwaste-text-secondary: var(--remwaste-slate-300);
+  --remwaste-text-tertiary: var(--remwaste-slate-400);
+
+  /* ===== Dark Mode Border Colors ===== */
+  --remwaste-border-primary: var(--remwaste-slate-700);
+  --remwaste-border-secondary: var(--remwaste-slate-600);
+}
+
+/* =====================================
+   COMPONENT-SPECIFIC STYLES
+   ===================================== */
+
+/* ===== Progress Stepper ===== */
+.remwaste-progress-stepper {
+  background: rgb(var(--remwaste-bg-primary) / 0.95);
+  border-bottom: 1px solid rgb(var(--remwaste-border-primary));
+  backdrop-filter: blur(8px);
+}
+
+.dark .remwaste-progress-stepper {
+  background: rgb(var(--remwaste-slate-950) / 0.95);
+  border-bottom: 1px solid rgb(var(--remwaste-slate-800));
+}
+
+/* ===== Skip Cards ===== */
+.remwaste-skip-card {
+  background: linear-gradient(
+    145deg,
+    rgb(var(--remwaste-bg-primary)),
+    rgb(var(--remwaste-bg-secondary))
+  );
+  border: 1px solid rgb(var(--remwaste-border-primary) / 0.5);
+  border-radius: var(--remwaste-radius-3xl);
+  box-shadow: var(--remwaste-shadow-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .remwaste-skip-card {
+  background: linear-gradient(
+    145deg,
+    rgb(var(--remwaste-slate-950)),
+    rgb(var(--remwaste-slate-900))
+  );
+  border: 1px solid rgb(var(--remwaste-slate-700) / 0.3);
+}
+
+.remwaste-skip-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--remwaste-shadow-xl);
+}
+
+.remwaste-skip-card.selected {
+  border-color: rgb(var(--remwaste-primary));
+  box-shadow: 0 0 0 1px rgb(var(--remwaste-primary)), var(--remwaste-shadow-xl);
+  transform: scale(1.02);
+}
+
+/* ===== Bottom Bar ===== */
+.remwaste-bottom-bar {
+  background: rgb(var(--remwaste-bg-primary) / 0.95);
+  border-top: 1px solid rgb(var(--remwaste-border-primary));
+  backdrop-filter: blur(16px);
+  box-shadow: var(--remwaste-shadow-xl);
+}
+
+.dark .remwaste-bottom-bar {
+  background: rgb(var(--remwaste-slate-950) / 0.95);
+  border-top: 1px solid rgb(var(--remwaste-slate-800));
+}
+
+/* ===== Buttons ===== */
+.remwaste-btn-primary {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--remwaste-primary)),
+    rgb(var(--remwaste-primary-dark))
+  );
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--remwaste-shadow-lg);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.remwaste-btn-primary:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--remwaste-primary-dark)),
+    rgb(var(--remwaste-secondary-dark))
+  );
+  box-shadow: var(--remwaste-shadow-xl);
+}
+
+.remwaste-btn-secondary {
+  background: rgb(var(--remwaste-bg-primary) / 0.7);
+  border: 1px solid rgb(var(--remwaste-border-primary));
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .remwaste-btn-secondary {
+  background: rgb(var(--remwaste-slate-800) / 0.7);
+  border: 1px solid rgb(var(--remwaste-slate-600));
+}
+
+/* ===== Badges ===== */
+.remwaste-badge-popular {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--remwaste-warning)),
+    rgb(var(--remwaste-error))
+  );
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--remwaste-shadow-md);
+}
+
+.remwaste-badge-best-value {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--remwaste-success)),
+    rgb(var(--remwaste-success-dark))
+  );
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--remwaste-shadow-md);
+}
+
+.remwaste-badge-feature {
+  background: rgb(var(--remwaste-bg-secondary));
+  color: rgb(var(--remwaste-text-secondary));
+  border: 1px solid rgb(var(--remwaste-border-primary));
+}
+
+.dark .remwaste-badge-feature {
+  background: rgb(var(--remwaste-slate-800) / 0.5);
+  color: rgb(var(--remwaste-slate-300));
+  border: 1px solid rgb(var(--remwaste-slate-700));
+}
+
+/* ===== Utility Classes ===== */
+.remwaste-gradient-bg {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--remwaste-primary) / 0.1),
+    rgb(var(--remwaste-secondary) / 0.1)
+  );
+}
+
+.dark .remwaste-gradient-bg {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--remwaste-primary) / 0.2),
+    rgb(var(--remwaste-secondary) / 0.2)
+  );
+}
+
+.remwaste-glass-effect {
+  background: rgb(var(--remwaste-bg-primary) / 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(var(--remwaste-border-primary) / 0.3);
+}
+
+.dark .remwaste-glass-effect {
+  background: rgb(var(--remwaste-slate-900) / 0.8);
+  border: 1px solid rgb(var(--remwaste-slate-700) / 0.3);
+}
+
+/* ===== Animations ===== */
+@keyframes remwaste-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes remwaste-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgb(var(--remwaste-primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgb(var(--remwaste-primary) / 0.6),
+      0 0 30px rgb(var(--remwaste-primary) / 0.4);
+  }
+}
+
+@keyframes remwaste-shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.remwaste-animate-float {
+  animation: remwaste-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.remwaste-animate-glow {
+  animation: remwaste-glow 3s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+.remwaste-animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--remwaste-primary) / 0.4),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: remwaste-shimmer 2s infinite;
+  will-change: background-position;
+}
+
+/* ===== Responsive Design Helpers ===== */
+.remwaste-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--remwaste-spacing-md);
+}
+
+@media (min-width: 640px) {
+  .remwaste-container {
+    padding: 0 var(--remwaste-spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .remwaste-container {
+    padding: 0 var(--remwaste-spacing-xl);
+  }
+}
+
+/* ===== Focus and Accessibility ===== */
+.remwaste-focus-visible {
+  outline: 2px solid rgb(var(--remwaste-primary));
+  outline-offset: 2px;
+}
+
+.remwaste-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
