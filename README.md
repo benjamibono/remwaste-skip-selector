@@ -222,18 +222,13 @@ Run the development server and test:
 - **Real-time availability** updates
 - **Integration** with booking system
 
-## 🤝 Contributing
+## 📝 About This Project
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+This is a coding challenge project demonstrating modern React development skills and UI/UX design capabilities. The redesign showcases:
 
-## 📄 License
+- Advanced React patterns and TypeScript implementation
+- Modern design principles and user experience optimization
+- Responsive web development and accessibility considerations
+- Clean, maintainable code architecture
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-**Built with ❤️ for REMWaste** - Transforming waste management through exceptional user experience.
+**Developed as a technical demonstration for REMWaste** - Showcasing capabilities in modern web development and user experience design.
