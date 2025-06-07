@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   plugins: [react()],
   server: {
-    allowedHosts: ["hhcp4r-5173.csb.app"],
+    allowedHosts: ["9yt8hm-5173.csb.app"],
   },
   resolve: {
     alias: {
