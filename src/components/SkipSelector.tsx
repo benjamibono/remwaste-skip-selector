@@ -1,14 +1,6 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Filter,
-  SortAsc,
-  SortDesc,
-  Info,
-  Sparkles,
-  Zap,
-  ChevronDown,
-} from "lucide-react";
+import { Filter, Info, ChevronDown } from "lucide-react";
 import { SkipCard } from "./SkipCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +15,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "./ThemeToggle";
 import { Skip } from "@/types/skip";
-import { cn } from "@/lib/utils";
 
 interface SkipSelectorProps {
   skips: Skip[];
@@ -123,7 +114,9 @@ export function SkipSelector({
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           ></motion.div>
-          <ThemeToggle />
+          <div className="sm:flex items-center gap-3 hidden">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Hero Section */}
@@ -133,7 +126,7 @@ export function SkipSelector({
           className="text-center mb-8 sm:mb-12"
         >
           <div className="relative inline-block mb-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 dark:from-white dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 dark:from-white dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent leading-tight">
               Choose Your Perfect Skip
             </h1>
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 blur-lg rounded-lg -z-10" />
@@ -142,7 +135,7 @@ export function SkipSelector({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto text-balance leading-relaxed"
+            className="sm:text-xl md:text-2xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto text-balance leading-relaxed"
           >
             Select from our range of premium skips designed for all your waste
             disposal needs
@@ -197,12 +190,13 @@ export function SkipSelector({
         >
           <div className="flex flex-col gap-4">
             {/* Mobile-optimized controls */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center sm:justify-between">
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="flex flex-row justify-end gap-3 sm:gap-4 items-center">
+              {/* Left side with filters */}
+              <div className="flex-1 lg:w-[155px] lg:flex-none flex flex-wrap items-center gap-2 sm:gap-3">
                 <Button
                   variant="outline"
                   onClick={() => setShowFilters(!showFilters)}
-                  className="flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-gray-200/50 dark:border-slate-600/50 text-sm px-3 py-2"
+                  className="w-full flex items-center justify-center gap-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-gray-200/50 dark:border-slate-600/50 text-sm px-3 py-2"
                 >
                   <Filter className="w-4 h-4" />
                   <span>Filters</span>
@@ -241,41 +235,45 @@ export function SkipSelector({
                 </AnimatePresence>
               </div>
 
-              {/* Custom Sort Dropdown */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border-gray-200 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-slate-700 px-4 py-3 text-sm min-w-[200px] justify-between"
-                  >
-                    {
-                      sortOptions.find((option) => option.value === sortBy)
-                        ?.label
-                    }
-                    <ChevronDown className="w-4 h-4 text-gray-400 dark:text-slate-500" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-gray-200 dark:border-slate-700 shadow-lg">
-                  <DropdownMenuLabel className="text-gray-900 dark:text-slate-100">
-                    Sort By
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuRadioGroup
-                    value={sortBy}
-                    onValueChange={(value) => setSortBy(value as SortOption)}
-                  >
-                    {sortOptions.map((option) => (
-                      <DropdownMenuRadioItem
-                        key={option.value}
-                        value={option.value}
-                        className="text-gray-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 focus:bg-blue-50 dark:focus:bg-blue-900/30"
-                      >
-                        {option.label}
-                      </DropdownMenuRadioItem>
-                    ))}
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              {/* Sort dropdown */}
+              <div className="flex-1 lg:w-[155px] lg:flex-none">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border-gray-200 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-slate-700 px-3 py-2 text-sm flex items-center justify-center gap-2"
+                    >
+                      <span>
+                        {
+                          sortOptions.find((option) => option.value === sortBy)
+                            ?.label
+                        }
+                      </span>
+                      <ChevronDown className="w-4 h-4 text-gray-400 dark:text-slate-500" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-[155px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-gray-200 dark:border-slate-700 shadow-lg">
+                    <DropdownMenuLabel className="text-gray-900 dark:text-slate-100">
+                      Sort By
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuRadioGroup
+                      value={sortBy}
+                      onValueChange={(value) => setSortBy(value as SortOption)}
+                    >
+                      {sortOptions.map((option) => (
+                        <DropdownMenuRadioItem
+                          key={option.value}
+                          value={option.value}
+                          className="text-gray-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 focus:bg-blue-50 dark:focus:bg-blue-900/30"
+                        >
+                          {option.label}
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
 
             {/* Enhanced Filter Options */}

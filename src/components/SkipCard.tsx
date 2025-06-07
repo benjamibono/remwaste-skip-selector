@@ -85,10 +85,27 @@ export function SkipCard({ skip, isSelected, onSelect, index }: SkipCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.08, duration: 0.4, ease: "easeOut" }}
+      transition={{
+        delay: index * 0.08,
+        duration: 0.4,
+        ease: "easeOut",
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        willChange: "transform, opacity",
+      }}
       whileHover={{
         y: -8,
-        transition: { duration: 0.2, ease: "easeOut" },
+        transition: {
+          duration: 0.2,
+          ease: "easeOut",
+          type: "tween",
+        },
+      }}
+      style={{
+        transform: "translateZ(0)", // Force GPU acceleration
+        backfaceVisibility: "hidden",
+        perspective: 1000,
       }}
       className={cn(
         "group relative card-modern rounded-3xl shadow-lg hover:shadow-2xl border-2 transition-all duration-300 cursor-pointer overflow-hidden",
@@ -97,6 +114,15 @@ export function SkipCard({ skip, isSelected, onSelect, index }: SkipCardProps) {
           : "border-gray-200/50 dark:border-slate-700/50 hover:border-blue-300 dark:hover:border-blue-600"
       )}
       onClick={() => onSelect(skip)}
+      role="button"
+      aria-pressed={isSelected}
+      aria-label={`Select ${skip.size} yard skip - ${totalPrice}`}
+      tabIndex={0}
+      onKeyPress={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          onSelect(skip);
+        }
+      }}
     >
       {/* Popular Badge */}
       {isPopular && !isSelected && (
@@ -133,12 +159,7 @@ export function SkipCard({ skip, isSelected, onSelect, index }: SkipCardProps) {
           </DialogTrigger>
           <DialogContent className="sm:max-w-md bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border border-gray-200/50 dark:border-slate-700/50 shadow-xl">
             <DialogHeader>
-              <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">
-                    {skip.size}
-                  </span>
-                </div>
+              <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white">
                 {skip.size} Yard Skip Details
               </DialogTitle>
             </DialogHeader>
@@ -364,6 +385,8 @@ export function SkipCard({ skip, isSelected, onSelect, index }: SkipCardProps) {
                 : "bg-gradient-to-r from-gray-900 to-gray-800 hover:from-blue-600 hover:to-blue-700 text-white shadow-gray-900/25 hover:shadow-blue-500/25"
             )}
             size="lg"
+            aria-hidden="true"
+            tabIndex={-1}
           >
             {isSelected ? (
               <motion.div

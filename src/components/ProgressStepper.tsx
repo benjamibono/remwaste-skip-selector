@@ -8,6 +8,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface Step {
   id: string;
@@ -103,8 +104,11 @@ export function ProgressStepper({ currentStep }: ProgressStepperProps) {
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-gray-500 dark:text-slate-400">
-                {Math.round((currentStep / steps.length) * 100)}%
+              <div className="flex items-center gap-3">
+                <div className="text-xs text-gray-500 dark:text-slate-400">
+                  {Math.round((currentStep / steps.length) * 100)}%
+                </div>
+                <ThemeToggle />
               </div>
             </div>
 
@@ -132,7 +136,7 @@ export function ProgressStepper({ currentStep }: ProgressStepperProps) {
                       )}
                       style={{
                         left: "calc(50% + 16px)",
-                        width: "calc(100% - 32px)",
+                        width: "calc(100% - 16px)",
                       }}
                       aria-hidden="true"
                     />
@@ -165,6 +169,7 @@ export function ProgressStepper({ currentStep }: ProgressStepperProps) {
               ))}
             </ol>
           </nav>
+          <div className="flex items-center justify-end"></div>
         </div>
       </div>
     </div>

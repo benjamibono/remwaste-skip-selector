@@ -1,0 +1,13 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://wewantwaste.co.uk/sitemap.xml
+
+# Prevent crawling of admin areas
+Disallow: /admin/
+Disallow: /api/
+
+# Rate limiting
+Crawl-delay: 1 
